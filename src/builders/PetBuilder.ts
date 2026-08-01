@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker';
-import { Pet, Category, Tag } from '../models/Pet';
+import { Pet } from '../models/Pet';
 
 export class PetBuilder {
 
@@ -10,16 +10,14 @@ export class PetBuilder {
         this.pet = {
             id: faker.number.int({ min: 1, max: 999999 }),
             category: {
-                id: faker.number.int({ min: 1, max: 9 }),
+                id: faker.number.int({ min: 1, max: 10 }),
                 name: 'Dogs'
             },
             name: faker.animal.dog(),
-            photoUrls: [
-                faker.image.url()
-            ],
+            photoUrls: [faker.image.url()],
             tags: [
                 {
-                    id: faker.number.int({ min: 1, max: 9 }),
+                    id: faker.number.int({ min: 1, max: 10 }),
                     name: faker.word.noun()
                 }
             ],
@@ -30,46 +28,22 @@ export class PetBuilder {
 
     public static create(): PetBuilder {
         return new PetBuilder();
+    }
+
+    public with <K extends keyof Pet> (field: K, value: Pet[K]): PetBuilder {
+
+        this.pet[field] = value;
+        return this;
 
     }
 
-    public withId(id: number): PetBuilder {
-
-        this.pet.id = id;
+    public remove <K extends keyof Pet> (field: K): PetBuilder {
+        delete this.pet[field];
         return this;
-    }
 
-    public withName(name: string): PetBuilder {
-
-        this.pet.name = name;
-        return this;
-    }
-
-    public withCategory(category: Category): PetBuilder {
-
-        this.pet.category = category;
-        return this;
-    }
-
-    public withPhotoUrls(photoUrls: string[]): PetBuilder {
-
-        this.pet.photoUrls = photoUrls;
-        return this;
-    }
-
-    public withTags(tags: Tag[]): PetBuilder {
-
-        this.pet.tags = tags;
-        return this;
-    }
-
-    public withStatus(status: NonNullable<Pet['status']>): PetBuilder {
-        this.pet.status = status;
-        return this;
     }
 
     public build(): Pet {
         return structuredClone(this.pet);
     }
-
 }

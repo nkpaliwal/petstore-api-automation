@@ -3,7 +3,7 @@ import { Environment } from './src/config/Environment';
 import { Config } from './src/config/Config';
 
 Environment.load();
-console.log(`BASE_URL from Config: ${Config.getBaseUrl()}`);
+//console.log(`BASE_URL from Config: ${Config.getBaseUrl()}`);
 
 export default defineConfig({
 
@@ -15,7 +15,8 @@ export default defineConfig({
 
   reporter: [
     ['html'],
-    ['list']
+    ['list'],
+    ['./src/utils/ApiPerformanceReporter.ts']
   ],
 
   use: {
