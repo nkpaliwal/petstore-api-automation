@@ -3,17 +3,18 @@
   "version": "1.0.0",
   "description": "API Automation Framework for PetStore App",
   "scripts": {
-  "test": "playwright test",
-  "test:dev": "cross-env ENV=dev playwright test",
-  "test:stage": "cross-env ENV=stage playwright test",
-  "test:ci": "cross-env ENV=ci playwright test",
-  "report": "playwright show-report"
-},
+    "test": "playwright test",
+    "test:dev": "cross-env ENV=dev playwright test",
+    "test:stage": "cross-env ENV=stage playwright test",
+    "test:ci": "cross-env ENV=ci playwright test",
+    "report": "playwright show-report"
+  },
   "keywords": [],
   "author": "Naresh Kumar Paliwal",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
+    "@faker-js/faker": "^10.5.0",
     "@playwright/test": "^1.62.1",
     "@types/node": "^26.1.2",
     "cross-env": "^10.1.0",
