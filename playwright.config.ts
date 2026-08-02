@@ -13,6 +13,7 @@ export default defineConfig({
 
   fullyParallel: true,
   workers: 4,
+  retries: 2,
 
   reporter: [
     ['html'],

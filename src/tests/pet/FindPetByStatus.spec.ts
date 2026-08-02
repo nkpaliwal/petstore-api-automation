@@ -2,6 +2,11 @@ import { test } from '../../fixtures/api.fixture';
 import { ApiAssertions } from '../../assertions/ApiAssertions';
 import { Logger } from '../../logger/Logger';
 
+test.describe.configure({
+    mode: 'parallel',
+    retries: 3
+});
+
 test.describe('Find Pet By Status API', () => {
 
     test('Should return status code 400 for an invalid pet status', async ({ petService }) => {
