@@ -12,12 +12,14 @@ export default defineConfig({
   timeout: Config.getTimeout(),
 
   fullyParallel: true,
+  workers: 4,
 
   reporter: [
     ['html'],
     ['list'],
-    ['./src/utils/ApiPerformanceReporter.ts']
-  ],
+    ['./src/utils/ApiPerformanceReporter.ts'],
+    ['allure-playwright']
+],
 
   use: {
     baseURL: Config.getBaseUrl(),

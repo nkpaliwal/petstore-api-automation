@@ -15,8 +15,7 @@ export class PetService {
 
     }
 
-    public async getPetById(petId: number): Promise<APIResponse> {
-
+    public async getPetById(petId: number | string): Promise<APIResponse> {
         return await this.apiClient.get(
             PetEndpoints.getPetById(petId)
         );
@@ -24,7 +23,6 @@ export class PetService {
     }
 
     public async updatePet(requestBody: unknown): Promise<APIResponse> {
-
         return await this.apiClient.put(
             PetEndpoints.PET,
             requestBody
@@ -33,11 +31,17 @@ export class PetService {
     }
 
     public async deletePet(petId: number): Promise<APIResponse> {
-
         return await this.apiClient.delete(
             PetEndpoints.getPetById(petId)
         );
 
     }
+
+    public async findPetsByStatus(status: string): Promise<APIResponse> {
+    return await this.apiClient.get(
+        PetEndpoints.findPetsByStatus(status)
+    );
+
+}
 
 }

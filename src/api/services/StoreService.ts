@@ -7,7 +7,6 @@ export class StoreService {
     constructor(private readonly apiClient: ApiClient) {}
 
     public async getInventory(): Promise<APIResponse> {
-
         return await this.apiClient.get(
             StoreEndpoints.INVENTORY
         );
@@ -15,7 +14,6 @@ export class StoreService {
     }
 
     public async placeOrder(requestBody: unknown): Promise<APIResponse> {
-
         return await this.apiClient.post(
             StoreEndpoints.ORDER,
             requestBody
@@ -24,7 +22,6 @@ export class StoreService {
     }
 
     public async getOrderById(orderId: number): Promise<APIResponse> {
-
         return await this.apiClient.get(
             StoreEndpoints.getOrderById(orderId)
         );
@@ -32,7 +29,6 @@ export class StoreService {
     }
 
     public async deleteOrder(orderId: number): Promise<APIResponse> {
-
         return await this.apiClient.delete(
             StoreEndpoints.getOrderById(orderId)
         );

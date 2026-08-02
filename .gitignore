@@ -1,7 +1,19 @@
+# Dependencies
 node_modules/
+
+# Build output
+dist/
+
+# Test reports
 playwright-report/
 test-results/
 allure-results/
 allure-report/
-dist/
+
+# Logs
 logs/
+
+# Environment files
+
+# OS files
+.DS_Store

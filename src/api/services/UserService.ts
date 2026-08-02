@@ -7,7 +7,6 @@ export class UserService {
     constructor(private readonly apiClient: ApiClient) {}
 
     public async createUser(requestBody: unknown): Promise<APIResponse> {
-
         return await this.apiClient.post(
             UserEndpoints.USER,
             requestBody
@@ -16,7 +15,6 @@ export class UserService {
     }
 
     public async getUser(username: string): Promise<APIResponse> {
-
         return await this.apiClient.get(
             UserEndpoints.getUserByUsername(username)
         );
@@ -24,7 +22,6 @@ export class UserService {
     }
 
     public async updateUser(username: string, requestBody: unknown): Promise<APIResponse> {
-
         return await this.apiClient.put(
             UserEndpoints.getUserByUsername(username),
             requestBody
@@ -33,7 +30,6 @@ export class UserService {
     }
 
     public async deleteUser(username: string): Promise<APIResponse> {
-
         return await this.apiClient.delete(
             UserEndpoints.getUserByUsername(username)
         );
@@ -41,7 +37,6 @@ export class UserService {
     }
 
     public async login(username: string, password: string): Promise<APIResponse> {
-
         return await this.apiClient.get(
             `${UserEndpoints.LOGIN}?username=${username}&password=${password}`
         );
@@ -49,7 +44,6 @@ export class UserService {
     }
 
     public async logout(): Promise<APIResponse> {
-
         return await this.apiClient.get(
             UserEndpoints.LOGOUT
         );

@@ -14,11 +14,11 @@ export class Logger {
                 format: 'YYYY-MM-DD HH:mm:ss'
             }),
 
-            format.printf(({ timestamp, level, message }) => {
+            format.printf(({ timestamp, level, message }) =>
 
-                return `[${timestamp}] [${level.toUpperCase()}] ${message}`;
+                `[${timestamp}] [${level.toUpperCase()}] ${message}`
 
-            })
+            )
 
         ),
 
@@ -27,46 +27,80 @@ export class Logger {
             new transports.Console(),
 
             new transports.File({
-                filename: path.join(process.cwd(), 'logs', 'execution.log')
+                filename: path.join(
+                    process.cwd(),
+                    'logs',
+                    'execution.log'
+                )
             })
 
         ]
 
     });
 
-    public static info(message: string): void {
+    /**
+     * Logs an informational message.
+     */
+    public static info(
+        message: string
+    ): void {
 
         this.logger.info(message);
 
     }
 
-    public static success(message: string): void {
+    /**
+     * Logs a success message.
+     */
+    public static success(
+        message: string
+    ): void {
 
         this.logger.info(`[SUCCESS] ${message}`);
 
     }
 
-    public static warn(message: string): void {
+    /**
+     * Logs a warning message.
+     */
+    public static warn(
+        message: string
+    ): void {
 
         this.logger.warn(message);
 
     }
 
-    public static error(message: string): void {
+    /**
+     * Logs an error message.
+     */
+    public static error(
+        message: string
+    ): void {
 
         this.logger.error(message);
 
     }
 
-    public static debug(message: string): void {
+    /**
+     * Logs a debug message.
+     */
+    public static debug(
+        message: string
+    ): void {
 
         this.logger.debug(message);
 
     }
 
+    /**
+     * Prints a separator line.
+     */
     public static line(): void {
 
-        this.logger.info('============================================================');
+        this.logger.info(
+            '============================================================'
+        );
 
     }
 

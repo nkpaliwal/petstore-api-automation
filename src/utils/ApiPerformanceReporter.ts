@@ -15,8 +15,8 @@ export default class ApiPerformanceReporter implements Reporter {
         console.log('\n============================================================');
         console.log('               API AUTOMATION EXECUTION STARTED');
         console.log('============================================================');
-        console.log(`Environment      : ${Environment.getEnvName}`);
-        console.log(`Base URL         : ${Environment.getBaseUrl}`);
+        console.log(`Environment      : ${Environment.getEnvName()}`);
+        console.log(`Base URL         : ${Environment.getBaseUrl()}`);
         console.log(`Workers          : ${config.workers}`);
         console.log(`Total Tests      : ${suite.allTests().length}`);
         console.log('============================================================\n');
@@ -30,7 +30,7 @@ export default class ApiPerformanceReporter implements Reporter {
         console.log('\n============================================================');
         console.log('              API AUTOMATION EXECUTION SUMMARY');
         console.log('============================================================');
-        console.log(`Environment      : ${Environment.getEnvName ?? 'dev'}`);
+        console.log(`Environment      : ${Environment.getEnvName() ?? 'dev'}`);
         console.log(`Status           : ${result.status.toUpperCase()}`);
         console.log(`Duration         : ${executionTime} seconds`);
         console.log(`HTML Report      : playwright-report/index.html`);
