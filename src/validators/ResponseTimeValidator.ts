@@ -1,5 +1,7 @@
 import { Logger } from '../logger/Logger';
 import { ApiPerformanceReport } from '../utils/ApiPerformanceReport';
+import { Environment } from '../config/Environment';
+
 
 export interface ApiExecution {
 
@@ -14,7 +16,7 @@ export interface ApiExecution {
 export class ResponseTimeValidator {
 
     private static readonly MAX_RESPONSE_TIME =
-        Number(process.env.MAX_RESPONSE_TIME) || 2000;
+        Environment.getMaxResponseTime();
 
     public static record(
         method: string,

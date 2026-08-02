@@ -4,7 +4,6 @@ import { Pet } from '../models/Pet';
 export class PetBuilder {
 
     private pet: Pet;
-
     private constructor() {
 
         this.pet = {
@@ -30,20 +29,27 @@ export class PetBuilder {
         return new PetBuilder();
     }
 
-    public with <K extends keyof Pet> (field: K, value: Pet[K]): PetBuilder {
+    public with<K extends keyof Pet>(
+        field: K,
+        value: Pet[K]
+    ): PetBuilder {
 
         this.pet[field] = value;
+
         return this;
 
     }
 
-    public remove <K extends keyof Pet> (field: K): PetBuilder {
+    public remove<K extends keyof Pet>(
+        field: K
+    ): PetBuilder {
+
         delete this.pet[field];
         return this;
-
     }
 
     public build(): Pet {
         return structuredClone(this.pet);
     }
+
 }

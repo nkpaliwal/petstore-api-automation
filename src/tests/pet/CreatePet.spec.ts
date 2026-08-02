@@ -1,22 +1,16 @@
-import { expect, test } from '@playwright/test';
-import { ApiClient } from '../../api/client/ApiClient';
-import { PetService } from '../../api/services/PetService';
+import { expect, test } from '../../fixtures/api.fixture';
 import { PetBuilder } from '../../builders/PetBuilder';
 
 test.describe('Create Pet API', () => {
 
-    test('Should create a new pet successfully', async ({ request }) => {
+    test('Should create a new pet successfully', async ({ petService }) => {
 
-        const apiClient = new ApiClient(request);
-        const petService = new PetService(apiClient);
         const pet = PetBuilder.create().build();
 
         const response = await petService.createPet(pet);
-
-        expect(response.status()).toBe(200);
-
         const responseBody = await response.json();
 
+        expect(response.status()).toBe(200);
         expect(responseBody.id).toBe(pet.id);
 
         expect(responseBody.category.id).toBe(pet.category?.id);

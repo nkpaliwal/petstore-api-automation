@@ -1,11 +1,12 @@
 import { createLogger, format, transports } from 'winston';
+import { Environment } from '../config/Environment';
 import path from 'path';
 
 export class Logger {
 
     private static logger = createLogger({
 
-        level: process.env.LOG_LEVEL || 'info',
+        level: Environment.getLogLevel() || 'info',
 
         format: format.combine(
 

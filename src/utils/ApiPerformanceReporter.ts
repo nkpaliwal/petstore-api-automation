@@ -1,5 +1,6 @@
 import { FullConfig, Reporter, Suite, FullResult } from '@playwright/test/reporter';
 import { ApiPerformanceReport } from './ApiPerformanceReport';
+import { Environment } from '../config/Environment';
 
 export default class ApiPerformanceReporter implements Reporter {
 
@@ -14,8 +15,8 @@ export default class ApiPerformanceReporter implements Reporter {
         console.log('\n============================================================');
         console.log('               API AUTOMATION EXECUTION STARTED');
         console.log('============================================================');
-        console.log(`Environment      : ${process.env.TEST_ENV}`);
-        console.log(`Base URL         : ${process.env.BASE_URL}`);
+        console.log(`Environment      : ${Environment.getEnvName}`);
+        console.log(`Base URL         : ${Environment.getBaseUrl}`);
         console.log(`Workers          : ${config.workers}`);
         console.log(`Total Tests      : ${suite.allTests().length}`);
         console.log('============================================================\n');
@@ -29,7 +30,7 @@ export default class ApiPerformanceReporter implements Reporter {
         console.log('\n============================================================');
         console.log('              API AUTOMATION EXECUTION SUMMARY');
         console.log('============================================================');
-        console.log(`Environment      : ${process.env.TEST_ENV}`);
+        console.log(`Environment      : ${Environment.getEnvName ?? 'dev'}`);
         console.log(`Status           : ${result.status.toUpperCase()}`);
         console.log(`Duration         : ${executionTime} seconds`);
         console.log(`HTML Report      : playwright-report/index.html`);
