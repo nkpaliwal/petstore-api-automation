@@ -10,8 +10,8 @@ test-results/
 allure-results/
 allure-report/
 
-# Logs
-logs/
+# Ignore everything inside logs
+logs/*
 
 # Environment files
 
