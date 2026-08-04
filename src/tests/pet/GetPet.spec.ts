@@ -91,7 +91,7 @@ test.describe('Get Pet API', () => {
         ApiAssertions.verifyField(
             responseBody.message,
             'Invalid ID supplied',
-            'Error Message'
+            'Field : message'
         );
 
         Logger.success('Verified HTTP 400 for an invalid pet ID.');
